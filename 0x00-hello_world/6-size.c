@@ -1,4 +1,4 @@
-#include <stdio>
+#include <stdio.h>
 
 /**
  * main - Starting point
@@ -15,7 +15,6 @@ int main(void)
 	long int l;
 	long long int c;
 	float z;
-
 
 
 	printf("The size of char: %lu byte(s)\n", sizeof(s));
