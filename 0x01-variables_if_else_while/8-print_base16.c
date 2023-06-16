@@ -21,6 +21,6 @@ int main(void)
 	{
 		putchar(letters);
 	}
-	putchart('\n');
+	putchar('\n');
 	return (0);
 }
