@@ -8,13 +8,18 @@
  * Return: Always 0
 */
 int main(void)
-{
-	char alphabet[24] = "abcdfghijklmnoprstuvwxyz";
-	int i;
 
-	for (i = 0; i <= 24; i++)
+{
+	char letters;
+
+	for (letters = 'a'; letters <= 'z'; letters++)
 	{
-		putchar(alphabet[i]);
+		if (letters == 'e' || letters == 'q')
+			continue;
+	putchar(letters);
 	}
+	putchar('\n')
 		return (0);
+
+
 }
