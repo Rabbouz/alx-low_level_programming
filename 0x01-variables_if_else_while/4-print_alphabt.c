@@ -9,11 +9,12 @@
 */
 int main(void)
 {
-	char lowercase;
+	char alphabet[24] = "abcdfghijklmnoprstuvwxyz";
+	int i;
 
-	for (lowercase = 'a'; lowercase <= 'z'; lowercase++)
+	for (i = 0; i <= 24; i++)
 	{
-		putchar(lowercase);
+		putchar(alphabet[i]);
 	}
 	putchar('\n');
 		return (0);
