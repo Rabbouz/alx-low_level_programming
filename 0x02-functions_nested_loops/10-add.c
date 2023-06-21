@@ -2,13 +2,14 @@
 
 /**
  * add - adding two integers and returns the result
- * @i: first integer number
- * @a: second inteer number
- * Return: result of integers
+ * @n1: first integer number to be computed
+ * @n2: second inteer number to be computed
+ * Return: value of integer
 */
-int add(int i, int a)
+
+int add(int n1, int n2)
+
 {
-	return (i + a);
+
+	return (n1 + n2);
 }
-
-
