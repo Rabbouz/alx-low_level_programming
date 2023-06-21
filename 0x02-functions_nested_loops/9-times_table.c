@@ -17,7 +17,7 @@ void times_table(void)
 			if (c > 9)
 			{
 				d = c % 10;
-				e = (a - d) / 10;
+				e = (c - d) / 10;
 				_putchar(44);
 				_putchar(32);
 				_putchar(e + '0');
@@ -31,7 +31,7 @@ void times_table(void)
 					_putchar(32);
 					_putchar(32);
 				}
-				_putchar(a + '0');
+				_putchar(c + '0');
 			}
 		}
 		_putchar('\n');
