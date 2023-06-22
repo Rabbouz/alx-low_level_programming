@@ -2,21 +2,19 @@
 
 /**
  * _isupper - Writing a function that checks for uppercase character
- * @c: the character to be checked as an integer
+ * @i: the integer to be checked
  * Return: 1 for uppercase / 0 otherwise
  *
 */
 
-int _isupper(int c)
-
+int _isupper(int i)
 {
-	if (c == 'A')
+	if (i >= 65 && i <= 90)
 	{
-		return 1;
+		return (1);
 	}
-	else if (c == 'a')
+	else
 	{
-		return 0;
+		return (0);
 	}
-	return (0);
 }
