@@ -2,20 +2,21 @@
 
 /**
  * _isupper - Writing a function that checks for uppercase character
- * @i: checked number
+ * @c: the character to be checked as an integer
  * Return: 1 for uppercase / 0 otherwise
  *
 */
 
-nt _isupper(int c)
+int _isupper(int c)
 
 {
 	if (c == 'A')
 	{
-		return (1);
+		return 1;
 	}
 	else if (c == 'a')
 	{
-		return (0);
+		return 0;
 	}
+	return (0);
 }
