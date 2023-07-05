@@ -4,11 +4,10 @@
  * _puts_recursion - Writing a  function that
  * prints a string, followed by a new line
  *
- * @s*: pointer of  string
+ * @*s: pointer of string
  * return: Always 0
 */
 void _puts_recursion(char *s)
-
 {
 	if (*s == '\0')
 	{
