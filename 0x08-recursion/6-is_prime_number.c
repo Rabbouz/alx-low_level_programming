@@ -12,7 +12,9 @@ int check_actual_prime(int n, int val);
 
 int is_prime_number(int n)
 {
-	return (check_actual_prime(n, 2));
+	if (n <= 1)
+		return (0);
+	return (check_actual_prime(n, n - 1));
 }
 
 /**
