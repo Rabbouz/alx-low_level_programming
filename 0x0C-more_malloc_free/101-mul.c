@@ -5,12 +5,12 @@
 #define ERR_MSG "Error"
 
 /**
- * is_digit - A function that checks if a string contains a non-digit char
+ * n_digit - A function that checks if a string contains a non-digit char
  * @s: string
  *
- * Return: 0 if a non-digit is found, 1 for else 
+ * Return: 0 if a non-digit is found, 1 for else
  */
-int is_digit(char *s)
+int n_digit(char *s)
 {
 	int x = 0;
 
@@ -42,9 +42,9 @@ int _strlen(char *s)
 }
 
 /**
- * errors - a function to handle errors for main
+ * error - a function to handle errors for main
  */
-void errors(void)
+void error(void)
 {
 	printf("Error\n");
 	exit(98);
@@ -60,11 +60,11 @@ void errors(void)
 int main(int argc, char *argv[])
 {
 	char *s1, *s2;
-	int len1, len2, len, x, hold, digit1, digit2, *result, i = 0;
+	int len1, len2, len, x, hold, digit1, digit2, *result, z = 0;
 
 	s1 = argv[1], s2 = argv[2];
-	if (argc != 3 || !is_digit(s1) || !is_digit(s2))
-		errors();
+	if (argc != 3 || !n_digit(s1) || !n_digit(s2))
+		error();
 	len1 = _strlen(s1);
 	len2 = _strlen(s2);
 	len = len1 + len2 + 1;
@@ -90,11 +90,11 @@ int main(int argc, char *argv[])
 	for (x = 0; x < len - 1; x++)
 	{
 		if (result[x])
-			i = 1;
-		if (i)
+			z = 1;
+		if (z)
 			_putchar(result[x] + '0');
 	}
-	if (!i)
+	if (!z)
 		_putchar('0');
 	_putchar('\n');
 	free(result);
