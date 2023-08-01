@@ -13,8 +13,8 @@
 
 typedef struct listint_sl
 {
-        int n;
-        struct listint_sl *next;
+	int n;
+	struct listint_sl *next;
 } listint_t;
 
 size_t print_listint(const listint_t *h);
