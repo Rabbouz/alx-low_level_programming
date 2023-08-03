@@ -11,6 +11,7 @@ void print_binary(unsigned long int n)
 {
 	int it, counter;
 	unsigned long int curr;
+
 	counter = 0;
 
 	for (it = 63; it >= 0; it--)
