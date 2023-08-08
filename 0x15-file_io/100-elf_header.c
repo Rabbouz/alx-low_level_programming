@@ -291,7 +291,7 @@ void closing_elf(int elf)
 int main(int __attribute__((__unused__)) argc, char *argv[])
 {
 	Elf64_Ehdr *header;
-	int op, rd;
+	int op, rd, len;
 
 	op = open(argv[1], O_RDONLY);
 	if (op == -1)
@@ -299,7 +299,8 @@ int main(int __attribute__((__unused__)) argc, char *argv[])
 		dprintf(STDERR_FILENO, "Error: Couldn't read file %s\n", argv[1]);
 		exit(98);
 	}
-	header = malloc(sizeof(Elf64_Ehdr));
+	len = strlen(argc[1]);
+	header = malloc(sizeof(Elf64_Ehdr) + len);
 	if (header == NULL)
 	{
 		close_elf(op);
