@@ -14,7 +14,7 @@ void print_file_version(unsigned char *magic_numbers);
 void print_os_and_abi(unsigned char *magic_numbers);
 void print_abi_version(unsigned char *magic_numbers);
 void print_elf_type(unsigned int elf_type, unsigned char *magic_numbers);
-void p_entry_point(unsigned long int e_point, unsigned char *m_numbers);
+void p_entry_point(unsigned long int e_point, unsigned char *magic_numbers);
 void closing_elf(int elf);
 /**
  * validate_elf - A function that checks if a file
@@ -120,7 +120,7 @@ void print_file_version(unsigned char *magic_numbers)
 {
 	printf(" Version: %d", e_ident[EI_VERSION]);
 
-	if (e_ident[EI_VERSION] == EV_CURRENT)
+	if (magic_numbers[EI_VERSION] == EV_CURRENT)
 	{
 		printf(" (current)\n");
 		}
@@ -223,22 +223,22 @@ void print_elf_type(unsigned int elf_type, unsigned char *magic_numbers)
 /**
  * p_entry_point - A function that pints the entry point of an ELF.
  * @e_point: address
- * @m_numbers: pointer
+ * @magic_numbers: pointer
  * Return: void
  */
 
-void p_entry_point(unsigned long int e_point, unsigned char *m_numbers);
+void p_entry_point(unsigned long int e_point, unsigned char *magic_numbers)
 {
 	printf(" Entry point address: ");
 
-	if (m_numbers[EI_DATA] == ELFDATA2MSB)
+	if (magic_numbers[EI_DATA] == ELFDATA2MSB)
 	{
 		e_point = ((e_point << 8) & 0xFF00FF00) |
 			  ((e_point >> 8) & 0xFF00FF);
 		e_point = (e_point << 16) | (e_point >> 16);
 	}
 
-	if (m_numbers[EI_CLASS] == ELFCLASS32)
+	if (magic_numbers[EI_CLASS] == ELFCLASS32)
 		printf("%#x\n", (unsigned int)e_point);
 
 	else
@@ -306,7 +306,7 @@ int main(int __attribute__((__unused__)) argc, char *argv[])
 	print_os_and_abi(header->magic_numbers);
 	print_abi_version(header->magic_numbers);
 	print_elf_type(header->elf_type, header->magic_numbers);
-	p_entry_point(header->e_point, header->m_numbers);
+	p_entry_point(header->e_point, header->magic_numbers);
 
 	free(header);
 	closing_elf(op);
