@@ -94,8 +94,7 @@ int main(int argc, char *argv[])
 		bytes_rd = read(source_fd, buff, 1024);
 		dest_fd = open(argv[2], O_WRONLY | O_APPEND);
 
-	} 
-	while (bytes_rd > 0);
+	} while (bytes_rd > 0);
 
 	free(buff);
 	closing_file(source_fd);
