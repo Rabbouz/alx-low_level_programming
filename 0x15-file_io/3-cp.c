@@ -8,6 +8,7 @@ void closing_file(int fd);
 /**
  * closing_file - A fucntion that closes file descriptors.
  * @f_d: file descriptor
+ * return : void
  */
 
 void closing_file(int f_d)
@@ -93,11 +94,12 @@ int main(int argc, char *argv[])
 		bytes_rd = read(source_fd, buff, 1024);
 		dest_fd = open(argv[2], O_WRONLY | O_APPEND);
 
-	} while (r > 0);
+	} 
+	while (bytes_rd > 0);
 
 	free(buff);
-	close_file(source_fd);
-	close_file(dest_fd);
+	closing_file(source_fd);
+	closing_file(dest_fd);
 
 	return (0);
 }
