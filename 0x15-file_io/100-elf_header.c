@@ -15,25 +15,27 @@ void print_os_and_abi(unsigned char *magic_numbers);
 void print_abi_version(unsigned char *magic_numbers);
 void print_elf_type(unsigned int elf_type, unsigned char *magic_numbers);
 void p_entry_point(unsigned long int e_point, unsigned char *m_numbers);
-void close_file_descriptor(int fd);
+void closing_elf(int elf);
 /**
  * validate_elf - A function that checks if a file
  * is an ELF file or not.
- * @e_ident: A pointer
+ * @magic_numbers: A pointer
  *
  * Return: void
  */
 void validate_elf(unsigned char *magic_numbers)
 {
 	for (int index = 0; index < 4; index++)
+	{
 	if (magic_numbers[index] != 127 &&
 	magic_numbers[index] != 'E' &&
 	magic_numbers[index] != 'L' &&
 	magic_numbers[index] != 'F')
 	{
-		dprintf(STDERR_FILENO, "Error: Not a valid ELF file\n");
-		exit(EXIT_FAILURE);
+		dprintf(STDERR_FILENO, "Error: Not a ELF file\n");
+		exit(98);
 		}
+	}
 }
 /**
  * print_magic_numbers - A function that prints
@@ -244,12 +246,10 @@ void p_entry_point(unsigned long int e_point, unsigned char *m_numbers);
 }
 
 /**
- * close_elf - Closes an ELF file.
- * @elf: The file descriptor of the ELF file.
- *
- * Description: If the file cannot be closed - exit code 98.
+ * closing_elf - A function that closes an ELF file.
+ * @elf: The file descriptor.
  */
-void close_elf(int elf)
+void closing_elf(int elf)
 {
 	if (close(elf) == -1)
 	{
@@ -276,7 +276,7 @@ int main(int __attribute__((__unused__)) argc, char *argv[])
 	int op bytes_rd;
 
 	op = open(argv[1], O_RDONLY);
-	if (o == -1)
+	if (op == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't read file %s\n", argv[1]);
 		exit(98);
@@ -297,18 +297,18 @@ int main(int __attribute__((__unused__)) argc, char *argv[])
 		exit(98);
 	}
 
-	check_elf(header->e_ident);
+	validate_elf(header->magic_numbers);
 	printf("ELF Header:\n");
-	print_magic(header->e_ident);
-	print_class(header->e_ident);
-	print_data(header->e_ident);
-	print_version(header->e_ident);
-	print_osabi(header->e_ident);
-	print_abi(header->e_ident);
-	print_type(header->e_type, header->e_ident);
-	print_entry(header->e_entry, header->e_ident);
+	print_magic_numbers(header->magic_numbers);
+	print_architecture_class(header->magic_numbers);
+	print_data_encoding(header->magic_numbers);
+	print_file_version(header->magic_numbers);
+	print_os_and_abi(header->magic_numbers);
+	print_abi_version(header->magic_numbers);
+	print_elf_type(header->elf_type, header->magic_numbers);
+	p_entry_point(header->e_point, header->m_numbers);
 
 	free(header);
-	close_elf(o);
+	closing_elf(op);
 	return (0);
 }
