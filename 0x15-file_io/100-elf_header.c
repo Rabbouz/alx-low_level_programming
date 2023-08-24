@@ -259,7 +259,7 @@ void printing_entry(unsigned long int e_entry, unsigned char *e_ident)
 }
 
 /**
- * close_elf - A function that closes an ELF file.
+ * closing_elf - A function that closes an ELF file.
  * @elf: The file descriptor
  * Return: void.
  * Description: If file not closed, exit code 98.
