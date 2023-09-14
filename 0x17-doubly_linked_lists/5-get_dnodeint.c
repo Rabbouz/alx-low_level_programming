@@ -1,8 +1,8 @@
 #include "lists.h"
 
 /**
- * sum_dlistint - A function that returns
- * the sum of all the data (n) of a doubly linked list
+ * get_dnodeint_at_index - A function that print the nth node of
+ * a dlistint_t linked list.
  * @head: head
  * @index: index
  * Return: sum
