@@ -4,25 +4,28 @@
  * sum_dlistint - A function that returns
  * the sum of all the data (n) of a doubly linked list
  * @head: head
+ * @index: index
  * Return: sum
  */
 
-int sum_dlistint(dlistint_t *head)
-
+dlistint_t *get_dnodeint_at_index(dlistint_t *head, unsigned int index)
 {
-	int sum = 0;
+	unsigned sum = 0;
 
-	if (head != NULL)
+	if (head == NULL)
+	return (0);
+
+	while (head != NULL)
 	{
-		while (head->prev != NULL)
-			head = head->prev;
-
-		while (head != NULL)
+		if (sum == index)
 		{
-			sum += head->n;
+			if (head != NULL)
+			return (head);
+			else
+			return (NULL);
+			}
 			head = head->next;
-		}
-	}
-
-	return (sum);
+			sum++;
+}
+return (head);
 }
