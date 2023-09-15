@@ -6,9 +6,11 @@
  * @head: head
  * @index: index
  * Return: 1 if succeeded, -1 if failed
- */
+*/
+
 int delete_dnodeint_at_index(dlistint_t **head, unsigned int index)
 {
+
 	dlistint_t *hd1;
 	dlistint_t *hd2;
 	unsigned int num;
