@@ -5,7 +5,7 @@
  * a dlistint_t linked list.
  * @head: head
  * @index: index
- * Return: sum
+ * Return: nth noden NULL if does not exit
  */
 
 dlistint_t *get_dnodeint_at_index(dlistint_t *head, unsigned int index)
